@@ -1,0 +1,239 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tech Pirates</title>
+
+    <!--Bootstrap-->
+    <link href="bootstrap-4.3.1-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
+
+    
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top p-0">
+      <a class="navbar-brand" href="#"><img src="media/techpirates_slogan.png" alt="Tech Pirates Logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="inventory.html">Inventory<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sales</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+          
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard Home </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="align-left"></span>
+                  List
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart"></span>
+                  Items<span class="sr-only">(current)
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="hash"></span>
+                  Add
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="flag"></span>
+                  Delete
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="list"></span>
+                  Edit
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+		<canvas class="my-4" id="myChart" width="0" height="0"></canvas>
+
+             <!-- FORM  -->	    
+    <div class="col-md-12">
+
+      <form class="form-horizontal" id="form-edit-client">
+       <fieldset>
+ 
+         <!-- Form Name -->
+         <legend>Add Product</legend>
+ 
+         <!-- Text input-->
+         <div class="form-group">
+           <label class="col-md-4 control-label" for="product-description">Description</label>  
+           <div class="col-md-4">
+             <input id="product-description" name="product-description" type="text" placeholder="Product's description" class="form-control input-md">
+             <span class="help-block">Description of the product</span>  
+           </div>
+         </div>
+ 
+         <!-- Prepended text-->
+         <div class="form-group">
+           <label class="col-md-4 control-label" for="product-quantity">Quantity</label>
+           <div class="col-md-4">
+             <div class="input-group">
+               <input id="product-quantity" name="product-quantity" class="form-control" placeholder="product-quantity" type="text">
+             </div>
+             <p class="help-block">Quantity of product</p>
+           </div>
+         </div>
+
+         <div class="form-group">
+          <label class="col-md-4 control-label" for="product-quantity">Cost</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <input id="product-cost" name="product-cost" class="form-control" placeholder="product-cost" type="number">
+            </div>
+            <p class="help-block">Cost of product</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="product-orderID">Order ID</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <input id="product-orderID" name="product-orderID" class="form-control" placeholder="pproduct-orderID" type="number">
+            </div>
+            <p class="help-block">product-orderID</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="product-itemID">Item ID</label>
+          <div class="col-md-4">
+            <div class="input-group">
+              <input id="product-itemID" name="product-itemID" class="form-control" placeholder="product-itemID" type="number">
+            </div>
+            <p class="help-block">Item ID</p>
+          </div>
+        </div>
+
+         <!-- Button -->
+
+       </fieldset>
+     </form>
+     <div class="form-group">
+           <label class="col-md-4 control-label" for="btn-save"></label>
+           <div class="col-md-4" id="saveupdate">
+             <button id="btn-save" name="btn-save" class="btn btn-success" onclick="addProduct()">Save</button>
+           </div>
+         </div>
+ 
+   </div> 
+ 
+ 
+ 
+ 
+   <!-- LIST -->
+   <div class=col-md-12>
+ 
+        <legend>List of Products</legend>
+ 
+      
+       <table class="table table-bordered table-condensed table-hover">
+         <thead>
+           <tr>
+              <td>description</td>
+              <td>quantity</td>
+              <td>cost</td>
+              <td>orderID</td>
+              <td>itemID</td>
+
+           </tr>
+ 
+         </thead>
+         <tbody id="form-list-client-body">
+ 
+         </tbody>
+       </table>
+     
+     
+   </div>
+ 
+ 
+   <br> 
+ 
+   <!-- view -->
+ 
+ 
+ 
+ 
+ </div>
+ </div>
+            
+
+    
+
+
+          
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+
+       
+        <script type="text/javascript" src="scripts/script.js"></script>
+        <!-- Icons -->
+        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+        <script>
+          feather.replace()
+        </script>
+
+      </body>
+
+      </html>
+
