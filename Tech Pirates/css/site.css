@@ -19,6 +19,12 @@ body {
 /*
  * Sidebar
  */
+ .form-control{
+  margin-bottom: 0.5rem;
+  max-width: 600px;
+ }
+
+
 
 .sidebar {
   position: fixed;
@@ -83,6 +89,18 @@ body {
   width: auto;
   max-height: 100px;
 }
+
+#product-table .btn-primary, .btn-danger{
+  margin: 0.25rem;
+}
+
+.column-heading{
+  font-weight: bold;
+}
+  
+
+
+
 
 /*
  * Utilities

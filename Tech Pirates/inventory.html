@@ -12,17 +12,15 @@
     <link href="bootstrap-4.3.1-dist/css/bootstrap.css" rel="stylesheet">
     <link href="css/site.css" rel="stylesheet">
 
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
-
-
     
   </head>
 
   <body>
     <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top p-0">
-      <a class="navbar-brand" href="#"><img src="media/techpirates_slogan.png" alt="Tech Pirates Logo"></a>
+      <a class="navbar-brand" href="#">Tech Pirates<img src="media/techpirates_slogan.png" alt="Tech Pirates Logo" aria-label="tech pirates logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,19 +28,19 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home </a>
+            <a class="nav-link" href="index.html" aria-label="Home">Home </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="inventory.html">Inventory<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="inventory.html" aria-label="inventory">Inventory<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Orders</a>
+            <a class="nav-link" href="#" aria-label="Orders">Orders</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sales</a>
+            <a class="nav-link" href="#" aria-label="Sales">Sales</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Help</a>
+            <a class="nav-link" href="#" aria-label="Help">Help</a>
           </li>
           
           
@@ -106,7 +104,7 @@
              <!-- FORM  -->	    
     <div class="col-md-12">
 
-      <form class="form-horizontal" id="form-edit-client">
+      <form class="form-horizontal was-validated needs-validation" id="form-edit-client" action="inventory.html"novalidate>
        <fieldset>
  
          <!-- Form Name -->
@@ -116,19 +114,44 @@
          <div class="form-group">
            <label class="col-md-4 control-label" for="product-description">Description</label>  
            <div class="col-md-4">
-             <input id="product-description" name="product-description" type="text" placeholder="Product's description" class="form-control input-md">
-             <span class="help-block">Description of the product</span>  
+             <textarea id="product-description" name="product-description" type="text" placeholder="Description" class="form-control textarea-md" required></textarea>
+              <div class="invalid-feedback">
+                Please provide a valid description.
+              </div>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
            </div>
          </div>
+
+         <div class="form-group">
+          <label class="col-md-4 control-label" for="product-status">Status</label>  
+          <div class="col-md-4">
+            <input id="product-status" name="product-status" type="text" placeholder="Status" class="form-control input-md" required>
+              <div class="invalid-feedback">
+                Please provide a valid status.
+              </div>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            <span class="help-block"></span>  
+          </div>
+        </div>
  
          <!-- Prepended text-->
          <div class="form-group">
            <label class="col-md-4 control-label" for="product-quantity">Quantity</label>
            <div class="col-md-4">
              <div class="input-group">
-               <input id="product-quantity" name="product-quantity" class="form-control" placeholder="product-quantity" type="text">
+               <input id="product-quantity" name="product-quantity" class="form-control" placeholder="Quantity" type="number" required>
+                <div class="invalid-feedback">
+                  Please provide a valid quantity.
+                </div> 
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
              </div>
-             <p class="help-block">Quantity of product</p>
+             <p class="help-block"></p>
            </div>
          </div>
 
@@ -136,19 +159,32 @@
           <label class="col-md-4 control-label" for="product-quantity">Cost</label>
           <div class="col-md-4">
             <div class="input-group">
-              <input id="product-cost" name="product-cost" class="form-control" placeholder="product-cost" type="number">
+              <div class="input-group-prepend"></div>
+              <input id="product-cost" name="product-cost" class="form-control" placeholder="Cost" type="number" aria-label="Dollar amount" required>
+                <div class="invalid-feedback">
+                  Please provide a valid cost.
+                </div> 
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
-            <p class="help-block">Cost of product</p>
+            <p class="help-block"></p>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="product-orderID">Order ID</label>
+          <label class="col-md-4 control-label" for="product-orderID">Product Code</label>
           <div class="col-md-4">
             <div class="input-group">
-              <input id="product-orderID" name="product-orderID" class="form-control" placeholder="pproduct-orderID" type="number">
+              <input id="product-code" name="product-code" class="form-control" placeholder="Code" type="number" aria-label="product-code"required>
+                <div class="invalid-feedback">
+                  Please provide a valid code.
+                </div> 
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
-            <p class="help-block">product-orderID</p>
+            <p class="help-block"></p>
           </div>
         </div>
 
@@ -156,43 +192,56 @@
           <label class="col-md-4 control-label" for="product-itemID">Item ID</label>
           <div class="col-md-4">
             <div class="input-group">
-              <input id="product-itemID" name="product-itemID" class="form-control" placeholder="product-itemID" type="number">
+              <input id="product-itemID" name="product-itemID" class="form-control" placeholder="Item ID" type="number" required>
+                <div class="invalid-feedback">
+                  Please provide a valid item ID.
+                </div> 
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
-            <p class="help-block">Item ID</p>
+            <p class="help-block"></p>
           </div>
         </div>
 
          <!-- Button -->
 
        </fieldset>
+       <div class="form-group">
+        <label class="col-md-4 control-label" for="btn-save"></label>
+        <div class="col-md-4" id="saveupdate">
+          <button id="btn-save" name="btn-save" class="btn btn-success" type="submit">Save</button>
+        </div>
+        <div class="alert alert-success" id="success-alert">
+          <strong>Success!</strong> Product added.
+        </div>
+        <div class="alert alert-danger" id="failure-alert">
+          <strong>Error!</strong> Ensure all fields are filled out correctly.
+        </div>
+      </div>
      </form>
-     <div class="form-group">
-           <label class="col-md-4 control-label" for="btn-save"></label>
-           <div class="col-md-4" id="saveupdate">
-             <button id="btn-save" name="btn-save" class="btn btn-success" onclick="addProduct()">Save</button>
-           </div>
-         </div>
+     
  
    </div> 
- 
- 
- 
- 
    <!-- LIST -->
    <div class=col-md-12>
  
         <legend>List of Products</legend>
+
+        <p>Key in your input to filter the table:</p>
+
+        <input class="form-control search"type="text" id="myinput" placeholder="Search..." title="Type in something" aria-label="filter-search">
  
       
-       <table class="table table-bordered table-condensed table-hover">
+       <table class="table table-bordered table-condensed table-hover" id="product-table">
          <thead>
            <tr>
-              <td>description</td>
-              <td>quantity</td>
-              <td>cost</td>
-              <td>orderID</td>
-              <td>itemID</td>
-
+              <th class="column-heading">Description</th>
+              <th class="column-heading">Quantity</th>
+              <th class="column-heading">Cost</th>
+              <th class="column-heading">Product Code</th>
+              <th class="column-heading">Item ID</th>
+              <th class="column-heading">Status</th>
            </tr>
  
          </thead>
@@ -225,8 +274,9 @@
       ================================================== -->
       <!-- Placed at the end of the document so the pages load faster -->
 
-       
-        <script type="text/javascript" src="scripts/script.js"></script>
+
+        <script type="text/javascript" src="scripts/inventory_script.js"></script>
+
         <!-- Icons -->
         <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
         <script>
