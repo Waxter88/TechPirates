@@ -1,0 +1,281 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tech Pirates</title>
+
+    <!--Bootstrap-->
+    <link href="bootstrap-4.3.1-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/site.css" rel="stylesheet">
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
+  </head>
+
+  <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top p-0">
+      <a class="navbar-brand" href="#">Tech Pirates<img src="media/techpirates_slogan.png" alt="Tech Pirates Logo" aria-label="tech pirates logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" aria-label="Home">Home </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="inventory.html" aria-label="inventory">Inventory</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="orders.html" aria-label="Orders">Orders<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="suppliers.html" aria-label="suppliers">Suppliers</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="customers.html" aria-label="customers">Customers</a>
+            </li>
+          <li>
+            <a class="nav-link" href="sales.html" aria-label="sales">Sales</a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link" href="#" aria-label="Help">Help</a>
+          </li>
+          
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard Home </span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="align-left"></span>
+                  List
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">
+                  <span data-feather="box"></span>
+                  Your Orders<span class="sr-only">(current)
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-plus"></span>
+                  New Order
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="archive"></span>
+                  Order History
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+		<canvas class="my-4" id="myChart" width="0" height="0"></canvas>
+
+    <!-- LIST -->
+   <div class=col-md-12>
+    <legend>Your Orders</legend>
+
+    <input class="form-control search"type="text" id="myinput" placeholder="Search..." title="Type in something" aria-label="filter-search">
+
+   <table class="table table-bordered table-condensed table-hover" id="product-table">
+     <thead>
+       <tr>
+          <th class="column-heading">Code</th>
+          <th class="column-heading">Item</th>
+          <th class="column-heading">Quantity</th>
+          <th class="column-heading">Order State</th>
+       </tr>
+
+     </thead>
+     <tbody id="form-list-client-body">
+
+    </tbody>
+   </table>
+ 
+  </div>
+
+             <!-- FORM  -->	    
+    <div class="col-md-12">
+
+      <form id="form-edit-client" action="inventory.html"novalidate>
+       <fieldset>
+ 
+         <!-- Form Name -->
+         <legend>New Order</legend>
+ 
+         <!-- Text input-->
+         <div class="form-group">
+           <label class="col-md-4 control-label" for="product-item">Item</label>  
+           <div class="col-md-4">
+            <select id="product-item" name="product-item" placeholder="Item" class="form-control textarea-md" required>
+              <option disabled selected></option>
+              <option value="Keyboard">Keyboard</option>
+              <option value="Mouse">Mouse</option>
+              <option value="Mousepad">Mousepad</option>
+              <option value="Monitor">Monitor</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Headset">Headset</option>
+            </select>
+            <div class="invalid-feedback">
+              Please provide a valid quantity.
+            </div> 
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+           </div>
+         </div>
+
+         <div class="form-group">
+           <label class="col-md-4 control-label" for="product-quantity">Quantity</label>
+           <div class="col-md-4">
+             <div class="input-group">
+               <input id="product-quantity" name="product-quantity" class="form-control" placeholder="Quantity" type="number" required>
+                <div class="invalid-feedback">
+                  Please provide a valid quantity.
+                </div> 
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+             </div>
+             <p class="help-block"></p>
+           </div>
+         </div>
+
+         <!-- Button -->
+
+       </fieldset>
+       <div class="form-group">
+        <label class="col-md-4 control-label" for="btn-save"></label>
+        <div class="col-md-4" id="saveupdate">
+          <button id="btn-save" name="btn-save" class="btn btn-success" type="submit">Save</button>
+        </div>
+        <div class="alert alert-success" id="success-alert">
+          <strong>Success!</strong> Product added.
+        </div>
+        <div class="alert alert-danger" id="failure-alert">
+          <strong>Error!</strong> Ensure all fields are filled out correctly.
+        </div>
+      </div>
+
+      <div class=col-md-12>
+ 
+        <legend>Order History</legend>
+       <table class="table table-bordered table-condensed table-hover" id="product-table">
+         <thead>
+           <tr>
+              <th class="column-heading">Code</th>
+              <th class="column-heading">Item</th>
+              <th class="column-heading">Quantity</th>
+              <th class="column-heading">Order State</th>
+           </tr>
+           <tbody id="form-list-order-history">
+          
+          </tbody>
+           <tr>
+            <td>124734</td>
+            <td>Keyboard</td>
+            <td>34</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>743332</td>
+            <td>Monitor</td>
+            <td>10</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>213632</td>
+            <td>Mouse</td>
+            <td>64</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>123732</td>
+            <td>Headset</td>
+            <td>39</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>753324</td>
+            <td>Mousepad</td>
+            <td>10</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>985474</td>
+            <td>Laptop</td>
+            <td>8</td>
+            <td>Delivered</td>
+           </tr>
+    
+         </thead>
+       </table>
+     
+      </div>
+
+     </form>
+     
+ 
+   </div> 
+ 
+   <!-- view -->
+ 
+ 
+ 
+ 
+ </div>
+ </div>
+            
+
+    
+
+
+          
+
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+
+
+        <script type="text/javascript" src="scripts/order_script.js"></script>
+
+        <!-- Icons -->
+        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+        <script>
+          feather.replace()
+        </script>
+
+      </body>
+
+      </html>
+
