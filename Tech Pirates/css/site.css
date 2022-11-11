@@ -84,6 +84,18 @@ body {
   max-height: 100px;
 }
 
+#options{
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+h2{
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
 /*
  * Utilities
  */

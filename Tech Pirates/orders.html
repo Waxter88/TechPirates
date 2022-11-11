@@ -30,11 +30,11 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html" aria-label="Home">Home </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="inventory.html" aria-label="inventory">Inventory<span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="orders.html" aria-label="Orders">Orders</a>
+            <a class="nav-link" href="inventory.html" aria-label="inventory">Inventory</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="orders.html" aria-label="Orders">Orders<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="suppliers.html" aria-label="suppliers">Suppliers</a>
@@ -77,26 +77,20 @@
               </li>
               <li class="nav-item active">
                 <a class="nav-link" href="#">
-                  <span data-feather="bar-chart"></span>
-                  Items<span class="sr-only">(current)
+                  <span data-feather="box"></span>
+                  Your Orders<span class="sr-only">(current)
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="hash"></span>
-                  Add
+                  <span data-feather="file-plus"></span>
+                  New Order
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <span data-feather="flag"></span>
-                  Delete
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="list"></span>
-                  Edit
+                  <span data-feather="archive"></span>
+                  Order History
                 </a>
               </li>
             </ul>
@@ -107,44 +101,60 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 		<canvas class="my-4" id="myChart" width="0" height="0"></canvas>
 
+    <!-- LIST -->
+   <div class=col-md-12>
+    <legend>Your Orders</legend>
+
+    <input class="form-control search"type="text" id="myinput" placeholder="Search..." title="Type in something" aria-label="filter-search">
+
+   <table class="table table-bordered table-condensed table-hover" id="product-table">
+     <thead>
+       <tr>
+          <th class="column-heading">Code</th>
+          <th class="column-heading">Item</th>
+          <th class="column-heading">Quantity</th>
+          <th class="column-heading">Order State</th>
+       </tr>
+
+     </thead>
+     <tbody id="form-list-client-body">
+
+    </tbody>
+   </table>
+ 
+  </div>
+
              <!-- FORM  -->	    
     <div class="col-md-12">
 
-      <form class="form-horizontal was-validated needs-validation" id="form-edit-client" action="inventory.html"novalidate>
+      <form id="form-edit-client" action="inventory.html"novalidate>
        <fieldset>
  
          <!-- Form Name -->
-         <legend>Add Product</legend>
+         <legend>New Order</legend>
  
          <!-- Text input-->
          <div class="form-group">
-           <label class="col-md-4 control-label" for="product-description">Description</label>  
+           <label class="col-md-4 control-label" for="product-item">Item</label>  
            <div class="col-md-4">
-             <textarea id="product-description" name="product-description" type="text" placeholder="Description" class="form-control textarea-md" required></textarea>
-              <div class="invalid-feedback">
-                Please provide a valid description.
-              </div>
-              <div class="valid-feedback">
+            <select id="product-item" name="product-item" placeholder="Item" class="form-control textarea-md" required>
+              <option disabled selected></option>
+              <option value="Keyboard">Keyboard</option>
+              <option value="Mouse">Mouse</option>
+              <option value="Mousepad">Mousepad</option>
+              <option value="Monitor">Monitor</option>
+              <option value="Laptop">Laptop</option>
+              <option value="Headset">Headset</option>
+            </select>
+            <div class="invalid-feedback">
+              Please provide a valid quantity.
+            </div> 
+            <div class="valid-feedback">
                 Looks good!
-              </div>
+            </div>
            </div>
          </div>
 
-         <div class="form-group">
-          <label class="col-md-4 control-label" for="product-status">Status</label>  
-          <div class="col-md-4">
-            <input id="product-status" name="product-status" type="text" placeholder="Status" class="form-control input-md" required>
-              <div class="invalid-feedback">
-                Please provide a valid status.
-              </div>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-            <span class="help-block"></span>  
-          </div>
-        </div>
- 
-         <!-- Prepended text-->
          <div class="form-group">
            <label class="col-md-4 control-label" for="product-quantity">Quantity</label>
            <div class="col-md-4">
@@ -161,62 +171,13 @@
            </div>
          </div>
 
-         <div class="form-group">
-          <label class="col-md-4 control-label" for="product-quantity">Cost</label>
-          <div class="col-md-4">
-            <div class="input-group">
-              <div class="input-group-prepend"></div>
-              <input id="product-cost" name="product-cost" class="form-control" placeholder="Cost" type="number" aria-label="Dollar amount" required>
-                <div class="invalid-feedback">
-                  Please provide a valid cost.
-                </div> 
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <p class="help-block"></p>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product-orderID">Product Code</label>
-          <div class="col-md-4">
-            <div class="input-group">
-              <input id="product-code" name="product-code" class="form-control" placeholder="Code" type="number" aria-label="product-code"required>
-                <div class="invalid-feedback">
-                  Please provide a valid code.
-                </div> 
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <p class="help-block"></p>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="product-itemID">Item ID</label>
-          <div class="col-md-4">
-            <div class="input-group">
-              <input id="product-itemID" name="product-itemID" class="form-control" placeholder="Item ID" type="number" required>
-                <div class="invalid-feedback">
-                  Please provide a valid item ID.
-                </div> 
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <p class="help-block"></p>
-          </div>
-        </div>
-
          <!-- Button -->
 
        </fieldset>
        <div class="form-group">
         <label class="col-md-4 control-label" for="btn-save"></label>
         <div class="col-md-4" id="saveupdate">
-          <button id="btn-save" name="btn-save" class="btn btn-success" type="submit" aria-label="Save New Product">Save New Product</button>
+          <button id="btn-save" name="btn-save" class="btn btn-success" type="submit">Save</button>
         </div>
         <div class="alert alert-success" id="success-alert">
           <strong>Success!</strong> Product added.
@@ -225,42 +186,67 @@
           <strong>Error!</strong> Ensure all fields are filled out correctly.
         </div>
       </div>
+
+      <div class=col-md-12>
+ 
+        <legend>Order History</legend>
+       <table class="table table-bordered table-condensed table-hover" id="product-table">
+         <thead>
+           <tr>
+              <th class="column-heading">Code</th>
+              <th class="column-heading">Item</th>
+              <th class="column-heading">Quantity</th>
+              <th class="column-heading">Order State</th>
+           </tr>
+           <tbody id="form-list-order-history">
+          
+          </tbody>
+           <tr>
+            <td>124734</td>
+            <td>Keyboard</td>
+            <td>34</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>743332</td>
+            <td>Monitor</td>
+            <td>10</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>213632</td>
+            <td>Mouse</td>
+            <td>64</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>123732</td>
+            <td>Headset</td>
+            <td>39</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>753324</td>
+            <td>Mousepad</td>
+            <td>10</td>
+            <td>Delivered</td>
+           </tr>
+           <tr>
+            <td>985474</td>
+            <td>Laptop</td>
+            <td>8</td>
+            <td>Delivered</td>
+           </tr>
+    
+         </thead>
+       </table>
+     
+      </div>
+
      </form>
      
  
    </div> 
-   <!-- LIST -->
-   <div class=col-md-12>
- 
-        <legend>List of Products</legend>
-
-        <p>Key in your input to filter the table:</p>
-
-        <input class="form-control search"type="text" id="myinput" placeholder="Search..." title="Type in something" aria-label="filter-search">
- 
-      
-       <table class="table table-bordered table-condensed table-hover" id="product-table">
-         <thead>
-           <tr>
-              <th class="column-heading">Description</th>
-              <th class="column-heading">Quantity</th>
-              <th class="column-heading">Cost</th>
-              <th class="column-heading">Product Code</th>
-              <th class="column-heading">Item ID</th>
-              <th class="column-heading">Status</th>
-           </tr>
- 
-         </thead>
-         <tbody id="form-list-client-body">
- 
-         </tbody>
-       </table>
-     
-     
-   </div>
- 
- 
-   <br> 
  
    <!-- view -->
  
@@ -281,7 +267,7 @@
       <!-- Placed at the end of the document so the pages load faster -->
 
 
-        <script type="text/javascript" src="scripts/inventory_script.js"></script>
+        <script type="text/javascript" src="scripts/order_script.js"></script>
 
         <!-- Icons -->
         <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>

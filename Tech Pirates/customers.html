@@ -1,4 +1,5 @@
 <!doctype html>
+<a id="top"></a>
   <html lang="en">
   <head>
     <meta charset="utf-8"/>
@@ -18,6 +19,7 @@
   </head>
 
   <body>
+    
     <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top p-0">
       <a class="navbar-brand" href="#">Tech Pirates<img src="media/techpirates_slogan.png" alt="Tech Pirates Logo" aria-label="tech pirates logo"></a>
@@ -30,8 +32,8 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html" aria-label="Home">Home </a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="inventory.html" aria-label="inventory">Inventory<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="inventory.html" aria-label="inventory">Inventory</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="orders.html" aria-label="Orders">Orders</a>
@@ -39,8 +41,8 @@
           <li class="nav-item">
             <a class="nav-link" href="suppliers.html" aria-label="suppliers">Suppliers</a>
           </li>
-            <li class="nav-item">
-                <a class="nav-link" href="customers.html" aria-label="customers">Customers</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="customers.html" aria-label="customers">Customers<span class="sr-only">(current)</span></a>
             </li>
           <li>
             <a class="nav-link" href="sales.html" aria-label="sales">Sales</a>
@@ -75,138 +77,168 @@
                   List
                 </a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#">
+              <li class="navbar-nav">
+                <a class="navbar-brand" href="#">
+                  Navigate Page
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#top">
                   <span data-feather="bar-chart"></span>
-                  Items<span class="sr-only">(current)
+                  Top of Page<span class="sr-only">
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="#add-customer-details">
+                  <span data-feather="bar-chart"></span>
+                  Customer Details<span class="sr-only">
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#customer-list">
                   <span data-feather="hash"></span>
-                  Add
+                  List of Customers
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="flag"></span>
-                  Delete
+                
+                  
+                  <div id="options">
+                    <strong>Options:</strong>
+                    <div>
+                      Show Customer Form: <input type="checkbox" id="show-hide-form" name="show-hide-form" value="show-hide-form" aria-label="Show/Hide Customer Input Form"checked>
+                    </div>
+                    <div>
+                      Extra Accessibility Helpers: <input type="checkbox" id="show-hide-accessibility" name="show-hide-accessibility" value="show-hide-accessibility" aria-label="Show Extra Accessibility options">
+                    </div>
+                  </div>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="list"></span>
-                  Edit
-                </a>
-              </li>
+              
             </ul>
           </div>
         </nav>
 
-        
+        <a id="add-customer-details"></a>    
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 		<canvas class="my-4" id="myChart" width="0" height="0"></canvas>
 
              <!-- FORM  -->	    
-    <div class="col-md-12">
+    <h1>Customers</h1>
 
-      <form class="form-horizontal was-validated needs-validation" id="form-edit-client" action="inventory.html"novalidate>
+    <div class="col-md-12" id="hidden-fields">
+      
+      <form class="form-horizontal was-validated needs-validation" id="form-edit-client" action="customers.html"novalidate>
+        
        <fieldset>
- 
          <!-- Form Name -->
-         <legend>Add Product</legend>
+         <h2>Add Customer Details</h2>
  
          <!-- Text input-->
          <div class="form-group">
-           <label class="col-md-4 control-label" for="product-description">Description</label>  
+           <label class="col-md-4 control-label" for="customer-firstName">First Name</label>  
            <div class="col-md-4">
-             <textarea id="product-description" name="product-description" type="text" placeholder="Description" class="form-control textarea-md" required></textarea>
+             <input type="text" id="customer-firstName" name="customer-firstName" type="text" placeholder="First Name" class="form-control textarea-md" required>
               <div class="invalid-feedback">
-                Please provide a valid description.
+                Please provide a valid first name.
               </div>
               <div class="valid-feedback">
                 Looks good!
               </div>
+             <span class="help-block">Enter your <mark>First Name</mark> using the english (Latin) alphabet.</span>
            </div>
          </div>
+         <div class="form-group">
+            <label class="col-md-4 control-label" for="customer-lastName">Last Name</label>  
+            <div class="col-md-4">
+              <input type="text" id="customer-lastName" name="customer-lastName" type="text" placeholder="Last Name" class="form-control textarea-md" required>
+               <div class="invalid-feedback">
+                 Please provide a valid last name.
+               </div>
+               <div class="valid-feedback">
+                 Looks good!
+               </div>
+               <span class="help-block"">Enter your <mark>Last Name</mark> using the english (Latin) alphabet.</span> 
+            </div>
+          </div>
 
          <div class="form-group">
-          <label class="col-md-4 control-label" for="product-status">Status</label>  
+          <label class="col-md-4 control-label" for="customer-Email">Email</label>  
           <div class="col-md-4">
-            <input id="product-status" name="product-status" type="text" placeholder="Status" class="form-control input-md" required>
+            <input id="customer-Email" name="customer-Email" type="email" placeholder="Email" class="form-control input-md" required>
               <div class="invalid-feedback">
-                Please provide a valid status.
+                Please provide a valid email.
               </div>
               <div class="valid-feedback">
                 Looks good!
               </div>
-            <span class="help-block"></span>  
+            <span class="help-block">Enter your <mark>Email Address</mark> using the following format: "Username" followed by "@" then the "mail server", and finally the "domain". Ex. Username@mailserver.domain. <a href="https://help.xmatters.com/ondemand/trial/valid_email_format.htm#:~:text=A%20valid%20email%20address%20consists,com%22%20is%20the%20email%20domain.">Click here for more information.</a></span>  
           </div>
         </div>
  
          <!-- Prepended text-->
          <div class="form-group">
-           <label class="col-md-4 control-label" for="product-quantity">Quantity</label>
+           <label class="col-md-4 control-label" for="customer-Phone">Phone No.</label>
            <div class="col-md-4">
              <div class="input-group">
-               <input id="product-quantity" name="product-quantity" class="form-control" placeholder="Quantity" type="number" required>
+               <input id="customer-Phone" name="customer-Phone" class="form-control" placeholder="Phone No." type="tel" required>
                 <div class="invalid-feedback">
-                  Please provide a valid quantity.
+                  Please provide a valid phone number.
                 </div> 
                 <div class="valid-feedback">
                     Looks good!
                 </div>
              </div>
-             <p class="help-block"></p>
+             <span class="help-block">Enter your <mark>Phone Number</mark> using the following format: "Country Code" followed by "Area Code" then the "Phone Number". Ex. 15555555555. <a href="https://www.wikihow.com/Write-a-Phone-Number#:~:text=To%20write%20a%20phone%20number,555%2D5555%20or%20(555)%20555%2D5555.">Click here for more information.</a></span>
            </div>
          </div>
 
          <div class="form-group">
-          <label class="col-md-4 control-label" for="product-quantity">Cost</label>
+          <label class="col-md-4 control-label" for="customer-Company">Company Name</label>
           <div class="col-md-4">
             <div class="input-group">
-              <div class="input-group-prepend"></div>
-              <input id="product-cost" name="product-cost" class="form-control" placeholder="Cost" type="number" aria-label="Dollar amount" required>
+              
+              <input id="customer-Company" name="customer-Company" class="form-control" placeholder="Company Name" type="text" aria-label="Company Name" required>
                 <div class="invalid-feedback">
-                  Please provide a valid cost.
+                  Please provide a valid Company Name.
                 </div> 
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <p class="help-block"></p>
+            <span class="help-block">Enter your <mark>Company Name</mark> using the english (Latin) alphabet.</span>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="product-orderID">Product Code</label>
+          <label class="col-md-4 control-label" for="customer-Invoice">Invoice Number</label>
           <div class="col-md-4">
             <div class="input-group">
-              <input id="product-code" name="product-code" class="form-control" placeholder="Code" type="number" aria-label="product-code"required>
+              <input id="customer-Invoice" name="customer-Invoice" class="form-control" placeholder="Invoice Number" type="text" aria-label="product-code"required>
                 <div class="invalid-feedback">
-                  Please provide a valid code.
+                  Please provide a valid Invoice Number.
                 </div> 
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <p class="help-block"></p>
+            <span class="help-block">Enter your 9 (nine) diget <mark>Invoice Number</mark> Ex. 123456789</span>
           </div>
         </div>
 
         <div class="form-group">
-          <label class="col-md-4 control-label" for="product-itemID">Item ID</label>
+          <label class="col-md-4 control-label" for="customer-City">City</label>
           <div class="col-md-4">
             <div class="input-group">
-              <input id="product-itemID" name="product-itemID" class="form-control" placeholder="Item ID" type="number" required>
+              <input id="customer-City" name="customer-City" class="form-control" placeholder="City" type="text" required>
                 <div class="invalid-feedback">
-                  Please provide a valid item ID.
+                  Please provide a valid City.
                 </div> 
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <p class="help-block"></p>
+            <span class="help-block">Enter your <mark>City</mark> using the english (Latin) alphabet. Ex. "Welland"</span> 
           </div>
         </div>
 
@@ -216,10 +248,10 @@
        <div class="form-group">
         <label class="col-md-4 control-label" for="btn-save"></label>
         <div class="col-md-4" id="saveupdate">
-          <button id="btn-save" name="btn-save" class="btn btn-success" type="submit" aria-label="Save New Product">Save New Product</button>
+          <button id="btn-save" name="btn-save" class="btn btn-success" type="submit">Save Customer</button>
         </div>
         <div class="alert alert-success" id="success-alert">
-          <strong>Success!</strong> Product added.
+          <strong>Success!</strong> Details added.
         </div>
         <div class="alert alert-danger" id="failure-alert">
           <strong>Error!</strong> Ensure all fields are filled out correctly.
@@ -232,22 +264,23 @@
    <!-- LIST -->
    <div class=col-md-12>
  
-        <legend>List of Products</legend>
+        <a id="customer-list"><legend>Customer Details</legend></a>
 
-        <p>Key in your input to filter the table:</p>
+        
 
-        <input class="form-control search"type="text" id="myinput" placeholder="Search..." title="Type in something" aria-label="filter-search">
+        <input class="form-control search"type="text" id="myinput" placeholder="Start typing to filter customers..." title="Type in something" aria-label="filter-search">
  
       
        <table class="table table-bordered table-condensed table-hover" id="product-table">
          <thead>
            <tr>
-              <th class="column-heading">Description</th>
-              <th class="column-heading">Quantity</th>
-              <th class="column-heading">Cost</th>
-              <th class="column-heading">Product Code</th>
-              <th class="column-heading">Item ID</th>
-              <th class="column-heading">Status</th>
+              <th class="column-heading">First Name</th>
+              <th class="column-heading">Last Name</th>
+              <th class="column-heading">Email</th>
+              <th class="column-heading">Phone</th>
+              <th class="column-heading">Company Name</th>
+              <th class="column-heading">Invoice Number</th>
+              <th class="column-heading">City</th>
            </tr>
  
          </thead>
@@ -281,7 +314,7 @@
       <!-- Placed at the end of the document so the pages load faster -->
 
 
-        <script type="text/javascript" src="scripts/inventory_script.js"></script>
+        <script type="text/javascript" src="scripts/customers_script.js"></script>
 
         <!-- Icons -->
         <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
