@@ -295,7 +295,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="btn-save"></label>
               <div class="col-md-4" id="saveupdate">
-                <button id="btn-save" name="btn-save" class="btn btn-success" type="button" onclick="submitCustomer()"><span data-feather="save"></span> Save Customer</button>
+                <button id="btn-save" name="btn-save" class="btn btn-success" type="button" onclick="submitCustomer()"> Save Customer <i data-feather='save'></i></button>
               </div>
               <div class="alert alert-success" id="success-alert">
                 <strong>Success!</strong> Details added.
@@ -360,10 +360,9 @@
           </button>
         </div>
         <div class="modal-body">
-          <p style="color: red;"><strong>This action cannot be undone.</strong></p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="confirmDeleteButton">Confirm Delete</button>
+          <button type="button" class="btn btn-primary" id="confirmDeleteButton" onclick="deleteCustomer(id)">Confirm Delete</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -383,6 +382,13 @@
   <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
   <script>
     feather.replace()
+    //on display customers , replace the feather icons
+    $('button').click(function () {
+      feather.replace()
+    })
+    //on edit customers , replace the feather icons
+   
+    
   </script>
   <a id="bottom"></a>
 </body>

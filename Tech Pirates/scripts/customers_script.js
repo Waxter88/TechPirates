@@ -72,9 +72,12 @@ $('#deleteConfirm').on('show.bs.modal', function (event) {
   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-  //modal.find('.modal-footer #confirmDeleteButton').attr('href', 'delete.php?id=' + id )
-  modal.find('.modal-title').text('Are you sure you want to delete ' + name + '?')
-  modal.find('.modal-body').append('Are you sure you wish to delete <strong>'+ name + ' </strong>with customer email: <strong>' + email + '</strong>? ID is: <strong>' + id + '</strong>');
+  var deleteBttn = modal.find('.modal-footer #confirmDeleteButton')
+  //deleteBttn.setAttribute('data-cust-id', id);
+  modal.find('.modal-title').text('Are you sure you want to delete: ' + name + '?')
+  modal.find('.modal-body').html('<p>Are you sure you wish to delete <br><br>Name: <strong>'+ name + ' <br></strong> Customer Email: <strong>' + email + '</strong><br>ID: <strong>' + id + '</strong><br><p style="color: red;"><strong>This action cannot be undone.</strong></p></p>');
+
+  
 })
 
 
@@ -187,15 +190,15 @@ function displayCustomers(){
 
       var deletebtn=document.createElement("button")
       deletebtn.innerHTML="Delete"
-      //deletebtn.innerHTML += " <i data-feather='trash-2'></i>"
+      deletebtn.innerHTML += " <i data-feather='trash-2'></i>"
       deletebtn.setAttribute("class" , "btn btn-sm btn-danger")
       deletebtn.setAttribute("data-toggle" , "modal")
       deletebtn.setAttribute("data-target" , "#deleteConfirm")
-      //deletebtn.setAttribute("data-name" , customers[i]["firstName"] + " " + customers[i]["lastName"])
-      //deletebtn.setAttribute("data-cust-email" , customers[i]["email"])
-      //deletebtn.setAttribute("data-cust-id" , i)
+      deletebtn.setAttribute("data-name" , customers[i]["firstName"] + " " + customers[i]["lastName"])
+      deletebtn.setAttribute("data-cust-email" , customers[i]["email"])
+      deletebtn.setAttribute("data-cust-id" , i)
 
-      deletebtn.setAttribute("onclick" , "deleteCustomer("+i+")")
+      //deletebtn.setAttribute("onclick" , "deleteCustomer("+i+")")
 
       actionTd.appendChild(editBtn)
       actionTd.appendChild(deletebtn)
@@ -214,7 +217,7 @@ function displayCustomers(){
 
     
       filterTable();
-      //feather.replace();
+     //feather.replace();
   }
 
   //Editing customer
@@ -226,8 +229,10 @@ function displayCustomers(){
     console.log(customers[i])
     myIndex=i;
     var updatebtn=document.createElement("button")
-    updatebtn.innerHTML="Update Customer";
+    updatebtn.innerHTML="Update Customer <i data-feather='save'></i>";
     updatebtn.setAttribute("class", "btn btn-success")
+    updatebtn.setAttribute("id", "update-btn")
+    updatebtn.setAttribute("type", "button")
     updatebtn.setAttribute("onclick","updCustomer()")
     document.getElementById("saveupdate").innerHTML=""
     document.getElementById("saveupdate").appendChild(updatebtn);
@@ -255,18 +260,23 @@ function displayCustomers(){
     }
     customers[myIndex]=updatedCustomer;
     var crbtn=document.createElement("button")
-    crbtn.innerHTML="<span data-feather='save'></span> Save Customer";
+    crbtn.innerHTML="Save Customer <i data-feather='save'></i>";
     crbtn.setAttribute("onclick","submitCustomer()")
     crbtn.setAttribute("class","btn btn-success")
+    crbtn.setAttribute("id","btn-save")
+    crbtn.setAttribute("name","btn-save")
+    crbtn.setAttribute("type","button")
     document.getElementById("saveupdate").innerHTML=""
     
     document.getElementById("saveupdate").appendChild(crbtn);
     
     displayCustomers()
+    feather.replace();
   }
 
   //deleting customer
   function deleteCustomer(i){
+    $("#deleteConfirm").modal("hide");
     customers.splice(i,1)
     displayCustomers()
   }
