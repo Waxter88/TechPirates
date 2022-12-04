@@ -73,6 +73,17 @@ body {
 /*
  * Navbar
  */
+.form-row{
+width: 100%;
+}
+
+.sidebar-sticky{
+  margin-top: 125px;
+}
+
+input[type="text"],input[type="email"], input[type="tel"], input[type="number"]{
+  width: 500px;
+}
 
 .navbar-brand {
   padding-top: .75rem;
@@ -90,6 +101,11 @@ body {
   max-height: 100px;
 }
 
+#options{
+  padding-top: .1rem;
+  padding-left: 1rem;
+  font-weight: 600;
+}
 
 /*
  * Utilities
